@@ -1,0 +1,38 @@
+[
+  {
+    "id": "m1",
+    "name": "عبدالله بن معجب",
+    "city": "الكويت",
+    "photo": "images/Screenshot 2025-12-05 213357.png"
+  },
+  {
+    "id": "m2",
+    "name": "معجب بن عبدالله",
+    "city": "الكويت",
+    "photo": "images/placeholder.png"
+  },
+  {
+    "id": "m3",
+    "name": "سعد بن عبدالله",
+    "city": "الكويت",
+    "photo": "images/placeholder.png"
+  },
+  {
+    "id": "m4",
+    "name": "حطاب بن عبدالله",
+    "city": "الكويت",
+    "photo": "images/placeholder.png"
+  },
+  {
+    "id": "m5",
+    "name": "فهيد بن عبدالله",
+    "city": "الكويت",
+    "photo": "images/placeholder.png"
+  },
+    {
+    "id": "m3",
+    "name": "محمد بن عبدالله",
+    "city": "الكويت",
+    "photo": "images/placeholder.png"
+  }
+]

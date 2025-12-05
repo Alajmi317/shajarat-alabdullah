@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>هوية العضو - شجرة آل عبدالله</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1 id="site-title">شجرة آل عبدالله</h1>
+    <nav><a href="index.html">الرئيسية</a> · <a href="admin.html">لوحة التحكم</a></nav>
+  </header>
+
+  <main class="container">
+    <section id="member-box" class="box"></section>
+  </main>
+
+  <footer>© 2025 شجرة آل عبدالله</footer>
+
+  <script>
+    // نقرأ members.json ونعرض العضو حسب ?id=م1
+    async function loadMember() {
+      const params = new URLSearchParams(location.search);
+      const id = params.get('id');
+      const res = await fetch('members.json');
+      const members = await res.json();
+      const m = members.find(x => x.id === id);
+      const box = document.getElementById('member-box');
+      if (!m) {
+        box.innerHTML = '<h2>العنصر غير موجود</h2><p>تأكد من رابط العضو.</p>';
+        return;
+      }
+      box.innerHTML = `
+        <div class="member-profile">
+          <img class="member-photo" src="${m.photo}" alt="${m.name}" />
+          <h2>${m.name}</h2>
+          <p><strong>تاريخ الميلاد:</strong> ${m.birth || 'غير محدد'}</p>
+          <p><strong>المدينة:</strong> ${m.city || 'غير محدد'}</p>
+          <p>${m.bio || ''}</p>
+          <p><a href="index.html">عودة للقائمة</a></p>
+        </div>
+      `;
+    }
+    loadMember();
+  </script>
+</body>
+</html>

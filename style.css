@@ -1,0 +1,143 @@
+:root {
+    --accent: #2e7d32;
+    --bg: #f5f5f5;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    font-family: "Tajawal", sans-serif;
+    background: var(--bg);
+    margin: 0;
+    color: #222;
+}
+
+.site-header {
+    background: var(--accent);
+    color: #fff;
+    padding: 18px 12px;
+    text-align: center;
+}
+
+.site-header nav a {
+    color: #fff;
+    margin: 0 8px;
+    text-decoration: none;
+    font-weight: 600
+}
+
+.container {
+    width: 95%;
+    max-width: 1000px;
+    margin: 20px auto
+}
+
+.box {
+    background: #fff;
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06)
+}
+
+.cards {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap
+}
+
+.card {
+    width: 230px;
+    padding: 12px;
+    border-radius: 10px;
+    background: #e8f5e9;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06)
+}
+
+.card img.thumb {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px
+}
+
+.card h3 {
+    margin: 10px 0 6px
+}
+
+.card p.bio {
+    font-size: 13px;
+    color: #333
+}
+
+.card .view-link {
+    display: inline-block;
+    margin-top: 10px;
+    background: var(--accent);
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 8px;
+    text-decoration: none
+}
+
+.member-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px
+}
+
+.member-photo {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08)
+}
+
+footer {
+    padding: 12px;
+    text-align: center;
+    color: #666
+}
+
+.admin-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee
+}
+
+.admin-actions {
+    margin-right: auto
+}
+
+.admin-actions button {
+    margin-left: 8px
+}
+
+label {
+    display: block;
+    margin: 8px 0
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ddd
+}
+
+button {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 0;
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer
+}
