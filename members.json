@@ -27,7 +27,7 @@
     "id": "m5",
     "name": "فهيد بن عبدالله",
     "city": "الكويت",
-    "photo": "images/fhaidalajmi.json"
+    "photo": "https://example.com/images/fhaidalajmi.jpg"
   },
   {
     "id": "m6",
