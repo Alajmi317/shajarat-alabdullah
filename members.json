@@ -2,38 +2,43 @@
   {
     "id": "m1",
     "name": "عبدالله بن معجب",
+    "birth": "غير معروف",
     "city": "الكويت",
-    "photo": "images/images/placeholder.png"
+    "photo": "images/images/"
   },
   {
     "id": "m2",
     "name": "معجب بن عبدالله",
+    "birth": "غير معروف",
     "city": "الكويت",
-    "photo": "images/placeholder.png"
+    "photo": "images/"
   },
   {
     "id": "m3",
     "name": "سعد بن عبدالله",
+    "birth": "غير معروف",
     "city": "الكويت",
-    "photo": "images/placeholder.png"
+    "photo": "images/"
   },
   {
     "id": "m4",
     "name": "حطاب بن عبدالله",
+    "birth": "غير معروف",
     "city": "الكويت",
-    "photo": "images/placeholder.png"
+    "photo": "images/"
   },
   {
     "id": "m5",
     "name": "فهيد بن عبدالله",
+    "birth": "غير معروف",
     "city": "الكويت",
-    "photo": "images/placeholder.png"
+    "photo": "images/fhaidalajmi.jpg"
   },
-    {
+  {
     "id": "m6",
     "name": "محمد بن عبدالله",
+    "birth": "1982",
     "city": "الكويت",
-    "photo": "images/placeholder.png"
+    "photo": "images/"
   }
 ]
-
