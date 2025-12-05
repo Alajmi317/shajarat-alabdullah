@@ -27,15 +27,12 @@
     "id": "m5",
     "name": "فهيد بن عبدالله",
     "city": "الكويت",
-    "photo": "https://example.com/images/fhaidalajmi.jpg"
+    "photo": "images/placeholder.png"
   },
-  {
-    "id": "m6",
+    {
+    "id": "m3",
     "name": "محمد بن عبدالله",
     "city": "الكويت",
-    "photo": "images/Screenshot 2025-12-05 221501.png"
+    "photo": "images/placeholder.png"
   }
 ]
-
-
-
