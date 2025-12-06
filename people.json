@@ -44,7 +44,7 @@
     "id": 6,
     "name": "معجب بن عبدالله",
     "job": "",
-    "image": "rayan.jpg",
+    "image": "g.jpg",
     "description": "هنا وصف الشخص",
     "children": [15, 16]
   },
@@ -53,7 +53,7 @@
     "name": "عبدالله بن محمد",
     "job": "طالب",
     "birth": "2012/12/28",
-    "image": "saif.jpg",
+    "image": "ana.jpg",
     "children": []
   },
    {
@@ -97,7 +97,7 @@
     "id": 13,
     "name": "عبدالله بن سعد",
      "job": "طالب جامعة",
-    "birth": "2005",
+    "birth": "2005/7/10",
     "image": "abdullahsaad.jpg",
     "children": []
   },
