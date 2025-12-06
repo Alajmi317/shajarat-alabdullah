@@ -51,6 +51,7 @@
   {
     "id": 7,
     "name": "عبدالله بن محمد",
+    "birth": "2012",
     "image": "saif.jpg",
     "children": []
   },
@@ -88,7 +89,8 @@
   {
     "id": 13,
     "name": "سعد بن حطاب",
-    "image": "saif.jpg",
+    "birth": "2012",
+    "image": "saadhattab.jpg",
     "children": []
   },
    {
