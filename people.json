@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "عبدالله بن محمد",
+    "image": "abdullah.jpg",
+    "birth": "1980",
+    "city": "الرياض",
+    "children": [2, 3] 
+  },
+  {
+    "id": 2,
+    "name": "محمد بن عبدالله",
+    "image": "mohammed.jpg",
+    "birth": "2005",
+    "city": "الرياض",
+    "children": [4] 
+  },
+  {
+    "id": 3,
+    "name": "سعود بن عبدالله",
+    "image": "saud.jpg",
+    "birth": "2008",
+    "city": "الرياض",
+    "children": []
+  },
+  {
+    "id": 4,
+    "name": "تركي بن محمد",
+    "image": "turki.jpg",
+    "birth": "2025",
+    "city": "الرياض",
+    "children": []
+  }
+]
