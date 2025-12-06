@@ -7,36 +7,44 @@
 <style>
 body {
     font-family: sans-serif;
-    background: #eef5e3;
+    background: #f0f7e9;
     text-align: center;
-    padding-top: 100px;
+    padding-top: 70px;
 }
-
 .box {
-    background: white;
-    width: 350px;
+    width: 400px;
     margin: auto;
+    background: white;
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0 3px 12px rgba(0,0,0,0.2);
 }
-
 .logout {
     position: fixed;
-    top: 20px;
-    left: 20px;
+    top: 15px;
+    left: 15px;
+    padding: 10px 15px;
     background: #c62828;
     color: white;
-    padding: 10px 14px;
     border-radius: 10px;
     cursor: pointer;
-    text-decoration: none;
+}
+.user-list {
+    margin-top: 20px;
+    text-align: left;
+}
+.user {
+    background: #e6f0dc;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 8px;
 }
 </style>
 
 <script>
-// حماية الصفحة:
-if (localStorage.getItem("logged") !== "true") {
+// حماية لوحة التحكم
+if (localStorage.getItem("logged") !== "true" ||
+    localStorage.getItem("role") !== "admin") {
     window.location.href = "login.html";
 }
 </script>
@@ -44,18 +52,37 @@ if (localStorage.getItem("logged") !== "true") {
 </head>
 <body>
 
-<a class="logout" onclick="logout()">تسجيل خروج</a>
+<button class="logout" onclick="logout()">تسجيل خروج</button>
 
 <div class="box">
-    <h1>مرحبا بك في لوحة التحكم</h1>
-    <p>هنا يمكن إضافة أو تعديل بيانات العائلة.</p>
+    <h1>لوحة التحكم</h1>
+
+    <h3>المستخدمون:</h3>
+    <div id="users" class="user-list"></div>
 </div>
 
 <script>
+function loadUsers() {
+    let users = JSON.parse(localStorage.getItem("users"));
+
+    let html = "";
+    users.forEach(u => {
+        html += `
+            <div class="user">
+                <strong>${u.username}</strong> — ${u.role}
+            </div>
+        `;
+    });
+
+    document.getElementById("users").innerHTML = html;
+}
+
 function logout() {
-    localStorage.removeItem("logged");
+    localStorage.clear();
     window.location.href = "login.html";
 }
+
+loadUsers();
 </script>
 
 </body>
