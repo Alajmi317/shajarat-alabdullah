@@ -93,13 +93,15 @@
    {
     "id": 14,
     "name": "عبدالله بن سعد",
-    "image": "mohammed.jpg",
+    "birth": "2005",
+    "image": "abdullahsaad.jpg",
     "children": []
   },
   {
     "id": 15,
     "name": "حمد بن سعد",
-    "image": "saud.jpg",
+    "birth": "2011",
+    "image": "hamadsaad.jpg",
     "children": []
   },
   {
