@@ -29,9 +29,6 @@
         document.getElementById("info").innerHTML = `
           <h1>${p.name}</h1>
           <img src="${p.image}">
-          <p><b>المواليد:</b> {person.birth}</p>
-          <p><b>الوظيفة:</b> {person.job}</p>
-          <p><b>الوصف:</b> {person.description}</p>
           <div class="box">
           </div>
         `;
@@ -40,3 +37,24 @@
 
 </body>
 </html>
+
+export default function PersonPage({ person }) {
+  return (
+    <div style={{ padding: 20, textAlign: "center", background: "#f4f9ee" }}>
+      
+      <h1>{person.name}</h1>
+
+      <img 
+        src={person.photo} 
+        style={{ width: 250, borderRadius: 20 }}
+      />
+
+      <div style={{ marginTop: 20, fontSize: "18px" }}>
+        <p><strong>المواليد:</strong> {person.birth}</p>
+        <p><strong>الوظيفة:</strong> {person.job}</p>
+        <p><strong>الوصف:</strong> {person.description}</p>
+      </div>
+
+    </div>
+  );
+}
