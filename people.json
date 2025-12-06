@@ -115,5 +115,13 @@
     "birth": "2007/10/4",
     "image": "mane.jpg",
     "children": []
+  },
+  {
+    "id": 16,
+    "name": "صالح بن محمد",
+    "job": "طالب",
+    "birth": "2018",
+    "image": "x.jpg",
+    "children": []
   }
 ]
