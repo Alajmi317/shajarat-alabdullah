@@ -122,7 +122,7 @@
     "name": "صالح بن محمد",
     "job": "طالب",
     "birth": "2018/3/8",
-    "image": "sh.jpg",
+    "image": "4.jpg",
     "children": []
   },
   {
@@ -130,7 +130,7 @@
     "name": "سعد بن معجب",
     "job": "طالب",
     "birth": "2017",
-    "image": ".jpg",
+    "image": "3.jpg",
     "children": []
   },
   {
@@ -138,7 +138,7 @@
     "name": "مبارك بن محمد",
     "job": "طفل",
     "birth": "2023",
-    "image": ".jpg",
+    "image": "2.jpg",
     "children": []
   },
   {
@@ -146,7 +146,7 @@
     "name": "محمد بن فهيد",
     "job": "طالب",
     "birth": "2017",
-    "image": "sh.jpg",
+    "image": "1.jpg",
     "children": []
   },
 ]
