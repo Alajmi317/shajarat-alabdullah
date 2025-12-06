@@ -7,68 +7,56 @@
 <style>
 body {
     font-family: sans-serif;
-    background: #f0f7e9;
     text-align: center;
-    padding-top: 120px;
+    background: #eef5e3;
+    padding-top: 100px;
 }
-
 .box {
-    background: white;
     width: 300px;
+    background: white;
     margin: auto;
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0 3px 12px rgba(0,0,0,0.2);
 }
-
-input {
+input, button {
     width: 90%;
     padding: 10px;
-    margin: 10px 0;
+    margin: 8px 0;
     border-radius: 8px;
     border: 1px solid #bbb;
-    font-size: 16px;
 }
-
 button {
-    padding: 10px 20px;
     background: #2e7d32;
     color: white;
-    border: none;
-    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
-    width: 100%;
 }
-
-button:hover {
-    background: #1b5e20;
-}
-
-.error {
-    color: red;
-    font-size: 14px;
-}
+.error { color: red; margin-top: 10px; }
 </style>
-
 </head>
 <body>
 
 <div class="box">
     <h2>تسجيل الدخول</h2>
-
-    <input type="password" id="pass" placeholder="ادخل كلمة المرور">
-
+    <input id="user" placeholder="اسم المستخدم">
+    <input id="pass" type="password" placeholder="كلمة المرور">
     <button onclick="login()">دخول</button>
-
     <p id="error" class="error"></p>
 </div>
 
 <script>
+// إنشاء أدمن افتراضي
+if (!localStorage.getItem("users")) {
+    let defaultAdmin = [
+        { id: 1, username: "admin", password: "12345", role: "admin" }
+    ];
+    localStorage.setItem("users", JSON.stringify(defaultAdmin));
+}
+
 function login() {
     let username = document.getElementById("user").value.trim();
     let password = document.getElementById("pass").value.trim();
-    let msg = document.getElementById("error");
+    let error = document.getElementById("error");
 
     let users = JSON.parse(localStorage.getItem("users") || "[]");
 
@@ -76,32 +64,19 @@ function login() {
 
     if (user) {
         localStorage.setItem("logged", "true");
+        localStorage.setItem("role", user.role);
         localStorage.setItem("currentUser", username);
-        window.location.href = "admin.html";
+
+        if (user.role === "admin") {
+            window.location.href = "admin.html";
+        } else {
+            window.location.href = "index.html";
+        }
     } else {
-        msg.textContent = "اسم المستخدم أو كلمة المرور غير صحيحة";
+        error.textContent = "البيانات غير صحيحة";
     }
 }
 </script>
-    
-<input type="text" id="user" placeholder="اسم المستخدم">
-<input type="password" id="pass" placeholder="كلمة المرور">
 
-<script>
-// إنشاء أدمن افتراضي إذا ما كان موجود
-if (!localStorage.getItem("users")) {
-    let defaultAdmin = [
-        {
-            id: 1,
-            username: "admin",
-            password: "12345",
-            role: "admin"
-        }
-    ];
-    localStorage.setItem("users", JSON.stringify(defaultAdmin));
-}
-</script>
-
-    
 </body>
 </html>
