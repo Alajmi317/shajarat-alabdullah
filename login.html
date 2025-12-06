@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>تسجيل الدخول</title>
+
+<style>
+body {
+    font-family: sans-serif;
+    background: #f0f7e9;
+    text-align: center;
+    padding-top: 120px;
+}
+
+.box {
+    background: white;
+    width: 300px;
+    margin: auto;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #bbb;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+button:hover {
+    background: #1b5e20;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="box">
+    <h2>تسجيل الدخول</h2>
+
+    <input type="password" id="pass" placeholder="ادخل كلمة المرور">
+
+    <button onclick="login()">دخول</button>
+
+    <p id="error" class="error"></p>
+</div>
+
+<script>
+function login() {
+    const password = "abd123"; // ← غيّر كلمة المرور اللي تبيها
+    const input = document.getElementById("pass").value;
+
+    if (input === password) {
+        localStorage.setItem("logged", "true");
+        window.location.href = "admin.html";
+    } else {
+        document.getElementById("error").textContent = "كلمة المرور غير صحيحة";
+    }
+}
+</script>
+
+</body>
+</html>
