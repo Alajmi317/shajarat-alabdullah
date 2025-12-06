@@ -3,38 +3,131 @@
 <head>
   <meta charset="UTF-8">
   <title>شجرة آل عبدالله</title>
+
   <style>
-    body { font-family: sans-serif; background:#f7f7f7; padding:20px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:20px; }
-    .card {
-      background:white; padding:15px; border-radius:15px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:center;
-      transition:0.2s; cursor:pointer;
+    body {
+      font-family: sans-serif;
+      background: #e8f5e9;
+      padding: 20px;
+      text-align: center;
     }
-    .card:hover { transform: scale(1.05); }
-    img { width:120px; height:120px; object-fit:cover; border-radius:50%; }
+
+    h1 { color: #1b5e20; }
+
+    .level-title {
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 40px;
+      color: #2e7d32;
+    }
+
+    .tree-row {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 150px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .card:hover { transform: scale(1.07); }
+
+    .card img {
+      width: 100%;
+      height: 140px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .line {
+      width: 3px;
+      height: 40px;
+      background: #388e3c;
+      margin: 0 auto;
+    }
   </style>
 </head>
+
 <body>
   <h1>شجرة آل عبدالله</h1>
-  <div class="grid" id="people"></div>
+
+  <div id="tree"></div>
 
   <script>
     fetch("people.json")
       .then(res => res.json())
       .then(data => {
-        const div = document.getElementById("people");
-        data.forEach(person => {
+
+        // ---- 1) اختر الجد ----
+        const grandFather = data[0];
+
+        // ---- 2) أبناء الجد ----
+        const sons = grandFather.children.map(id =>
+          data.find(p => p.id === id)
+        );
+
+        // نعمل الحاوية
+        const div = document.getElementById("tree");
+
+        // --- الجد ---
+        div.innerHTML += `
+          <div class="level-title">الجد</div>
+          <div class="tree-row">
+            <div class="card" onclick="location.href='person.html?id=${grandFather.id}'">
+              <img src="${grandFather.image}">
+              <p>${grandFather.name}</p>
+            </div>
+          </div>
+          <div class="line"></div>
+        `;
+
+        // --- أبناء الجد ---
+        div.innerHTML += `
+          <div class="level-title">الأبناء</div>
+          <div class="tree-row">
+            ${sons.map(s => `
+              <div class="card" onclick="location.href='person.html?id=${s.id}'">
+                <img src="${s.image}">
+                <p>${s.name}</p>
+              </div>
+            `).join("")}
+          </div>
+        `;
+
+        // --- أحفاد كل ابن ---
+        sons.forEach(son => {
+          const grandKids = son.children.map(id =>
+            data.find(p => p.id === id)
+          );
+
           div.innerHTML += `
-            <div class="card" onclick="location.href='person.html?id=${person.id}'">
-              <img src="${person.image}">
-              <h3>${person.name}</h3>
+            <div class="line"></div>
+            <div class="level-title">أحفاد ${son.name}</div>
+            <div class="tree-row">
+              ${grandKids.map(k => `
+                <div class="card" onclick="location.href='person.html?id=${k.id}'">
+                  <img src="${k.image}">
+                  <p>${k.name}</p>
+                </div>
+              `).join("")}
             </div>
           `;
         });
+
       });
   </script>
 </body>
 </html>
+
+
 
 
