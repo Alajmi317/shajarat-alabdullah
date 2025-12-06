@@ -40,38 +40,3 @@
 </head>
 <body>
 
-<a href="index.html" class="back">← رجوع للصفحة الرئيسية</a>
-
-<div class="card">
-
-  <h1 id="name">جاري التحميل...</h1>
-
-  <img id="photo">
-
-  <p><strong>المواليد:</strong> <span id="birth"></span></p>
-  <p><strong>الوظيفة:</strong> <span id="job"></span></p>
-  <p><strong>الوصف:</strong> <span id="description"></span></p>
-
-</div>
-
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const id = Number(params.get("id"));
-
-  fetch("people.json")
-    .then(res => res.json())
-    .then(data => {
-      const person = data.find(p => p.id === id);
-
-      if (!person) return;
-
-      document.getElementById("name").textContent = person.name;
-      document.getElementById("photo").src = person.image;
-      document.getElementById("birth").textContent = person.birth || "—";
-      document.getElementById("job").textContent = person.job || "—";
-      document.getElementById("description").textContent = person.description || "—";
-    });
-</script>
-
-</body>
-</html>
