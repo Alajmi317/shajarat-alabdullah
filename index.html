@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
   <title>شجرة آل عبدالله</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: sans-serif; background:#f7f7f7; padding:20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:20px; }
+    .card {
+      background:white; padding:15px; border-radius:15px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:center;
+      transition:0.2s; cursor:pointer;
+    }
+    .card:hover { transform: scale(1.05); }
+    img { width:120px; height:120px; object-fit:cover; border-radius:50%; }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <h1>شجرة آل عبدالله</h1>
-    <nav><a href="index.html">الرئيسية</a> · <a href="admin.html">لوحة التحكم</a></nav>
-  </header>
+  <h1>شجرة آل عبدالله</h1>
+  <div class="grid" id="people"></div>
 
-  <main class="container">
-    <section id="intro" class="box">
-      <h2>مرحباً بكم</h2>
-      <p>قائمة أفراد آل عبدالله — اضغط على أي بطاقة لعرض صفحة الهوية الخاصة بالشخص.</p>
-    </section>
-
-    <section id="members" class="box cards"></section>
-  </main>
-
-  <footer>
-    © 2025 شجرة آل عبدالله
-  </footer>
-
-  <script src="script.js"></script>
+  <script>
+    fetch("people.json")
+      .then(res => res.json())
+      .then(data => {
+        const div = document.getElementById("people");
+        data.forEach(person => {
+          div.innerHTML += `
+            <div class="card" onclick="location.href='person.html?id=${person.id}'">
+              <img src="${person.image}">
+              <h3>${person.name}</h3>
+            </div>
+          `;
+        });
+      });
+  </script>
 </body>
 </html>
+
 
