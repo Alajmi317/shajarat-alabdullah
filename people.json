@@ -2,7 +2,9 @@
   {
     "id": 1,
     "name": "عبدالله بن معجب",
+    "job": "",
     "image": "abdullah.jpg",
+    "description": "هنا وصف الشخص",
     "children": [2, 3, 4, 5, 6]
   },
   {
@@ -18,24 +20,31 @@
     "name": "فهيد بن عبدالله",
     "job": "وزارة الدفاع (متقاعد)",
     "image": "fhaidalajmi.jpg",
+    "description": "هنا وصف الشخص",
     "children": [9, 10, 11]
   },
   {
     "id": 4,
     "name": "حطاب بن عبدالله",
+    "job": "",
     "image": "fahad.jpg",
+    "description": "هنا وصف الشخص",
     "children": [12, 13]
   },
   {
     "id": 5,
     "name": "سعد بن عبدالله",
+    "job": "",
     "image": "turki.jpg",
+    "description": "هنا وصف الشخص",
     "children": [14, 15]
   },
   {
     "id": 6,
     "name": "معجب بن عبدالله",
+    "job": "",
     "image": "rayan.jpg",
+    "description": "هنا وصف الشخص",
     "children": [16, 17, 18]
   },
   {
