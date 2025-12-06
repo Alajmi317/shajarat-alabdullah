@@ -13,7 +13,7 @@
     "job": "",
     "image": "m.jpg",
     "description": "هنا وصف الشخص",
-    "children": [14, 15]
+    "children": [14, 15, 17]
   },
   {
     "id": 3,
@@ -38,7 +38,7 @@
     "job": "وزارة الدفاع (متقاعد)",
     "image": "fhaidalajmi.jpg",
     "description": "هنا وصف الشخص",
-    "children": [8, 9]
+    "children": [8, 9, 19]
   },
   {
     "id": 6,
@@ -47,7 +47,7 @@
     "image": "m1.jpg",
     "birth": "1982",
     "description": "هنا وصف الشخص",
-    "children": [7, 16]
+    "children": [7, 16, 18]
   },
   {
     "id": 7,
@@ -121,8 +121,32 @@
     "id": 16,
     "name": "صالح بن محمد",
     "job": "طالب",
-    "birth": "2018",
+    "birth": "2018/3/8",
     "image": "sh.jpg",
     "children": []
-  }
+  },
+  {
+    "id": 17,
+    "name": "سعد بن معجب",
+    "job": "طالب",
+    "birth": "2017",
+    "image": ".jpg",
+    "children": []
+  },
+  {
+    "id": 18,
+    "name": "مبارك بن محمد",
+    "job": "طفل",
+    "birth": "2023",
+    "image": ".jpg",
+    "children": []
+  },
+  {
+    "id": 19,
+    "name": "محمد بن فهيد",
+    "job": "طالب",
+    "birth": "2017",
+    "image": "sh.jpg",
+    "children": []
+  },
 ]
