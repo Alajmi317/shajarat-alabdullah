@@ -38,3 +38,28 @@
 </body>
   <a onclick="history.back()" class="back-btn">← رجوع للصفحة الرئيسية</a>
 </html>
+<h1 id="name"></h1>
+
+<img id="photo" style="width: 250px; border-radius: 20px;" />
+
+<p><strong>المواليد:</strong> <span id="birth"></span></p>
+<p><strong>الوظيفة:</strong> <span id="job"></span></p>
+<p><strong>الوصف:</strong> <span id="description"></span></p>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const id = Number(params.get("id"));
+
+  fetch("people.json")
+    .then(res => res.json())
+    .then(data => {
+      const person = data.find(p => p.id === id);
+
+      document.getElementById("name").textContent = person.name;
+      document.getElementById("photo").src = person.image;
+      document.getElementById("birth").textContent = person.birth;
+      document.getElementById("job").textContent = person.job;
+      document.getElementById("description").textContent = person.description;
+    });
+</script>
+
