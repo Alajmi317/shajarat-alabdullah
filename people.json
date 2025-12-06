@@ -8,12 +8,14 @@
   {
     "id": 2,
     "name": "محمد بن عبدالله",
+    "job": "الكهرباء",
     "image": "mohammadalajmi.jpg",
     "children": [7, 8]
   },
   {
     "id": 3,
     "name": "فهيد بن عبدالله",
+    "job": "وزارة الدفاع (متقاعد)",
     "image": "fhaidalajmi.jpg",
     "children": [9, 10, 11]
   },
