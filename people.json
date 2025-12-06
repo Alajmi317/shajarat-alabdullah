@@ -113,7 +113,7 @@
     "id": 15,
     "name": "عبدالله بن معجب",
     "image": "fahad.jpg",
-    "children": [2]
+    "children": []
   },
   {
     "id": 16,
@@ -121,6 +121,5 @@
     "job": "طالب جامعه",
     "birth": "2007/10/4",
     "image": "mane.jpg",
-    "children": [2]
   }
 ]
