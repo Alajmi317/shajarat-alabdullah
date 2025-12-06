@@ -8,13 +8,13 @@
   {
     "id": 2,
     "name": "محمد بن عبدالله",
-    "image": "mohammed.jpg",
+    "image": "mohammadalajmi.jpg",
     "children": [7, 8]
   },
   {
     "id": 3,
     "name": "فهيد بن عبدالله",
-    "image": "saud.jpg",
+    "image": "fhaidalajmi.jpg",
     "children": [9, 10, 11]
   },
   {
@@ -25,13 +25,13 @@
   },
   {
     "id": 5,
-    "name": "سعد بن محمد",
+    "name": "سعد بن عبدالله",
     "image": "turki.jpg",
     "children": [14, 15]
   },
   {
     "id": 6,
-    "name": "معجب بن محمد",
+    "name": "معجب بن عبدالله",
     "image": "rayan.jpg",
     "children": [16, 17, 18]
   },
