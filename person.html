@@ -1,51 +1,58 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>هوية الشخص</title>
-  <style>
-    body { font-family: sans-serif; text-align:center; padding:20px; background:#f1f8e9; }
-    img { width:200px; border-radius:15px; }
-    .box {
-      background:white; padding:20px; margin:auto; margin-top:20px;
-      width:300px; border-radius:15px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    }
-  </style>
+<meta charset="UTF-8">
+<title>الهوية</title>
+
+<style>
+  body {
+    font-family: sans-serif;
+    background: #f1f8e9;
+    text-align: center;
+    padding: 20px;
+  }
+  .card {
+    background: white;
+    width: 320px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  }
+  img {
+    width: 250px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+  }
+  .back {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: #2e7d32;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+</style>
+
 </head>
 <body>
 
-  <div id="info"></div>
+<a href="index.html" class="back">← رجوع للصفحة الرئيسية</a>
 
-  <script>
-    const params = new URLSearchParams(location.search);
-    const id = Number(params.get("id"));
+<div class="card">
 
-    fetch("people.json")
-      .then(res => res.json())
-      .then(data => {
-        const p = data.find(x => x.id === id);
+  <h1 id="name">جاري التحميل...</h1>
 
-        document.getElementById("info").innerHTML = `
-          <h1>${p.name}</h1>
-          <img src="${p.image}">
-          <div class="box">
-            <p><b>رقم الهوية:</b> ${p.id}</p>
-          </div>
-        `;
-      });
-  </script>
+  <img id="photo">
 
-</body>
-</html>
+  <p><strong>المواليد:</strong> <span id="birth"></span></p>
+  <p><strong>الوظيفة:</strong> <span id="job"></span></p>
+  <p><strong>الوصف:</strong> <span id="description"></span></p>
 
-<h1 id="name"></h1>
-
-<img id="photo" style="width: 250px; border-radius: 20px;" />
-
-<p><strong>المواليد:</strong> <span id="birth"></span></p>
-<p><strong>الوظيفة:</strong> <span id="job"></span></p>
-<p><strong>الوصف:</strong> <span id="description"></span></p>
+</div>
 
 <script>
   const params = new URLSearchParams(window.location.search);
@@ -56,10 +63,15 @@
     .then(data => {
       const person = data.find(p => p.id === id);
 
+      if (!person) return;
+
       document.getElementById("name").textContent = person.name;
       document.getElementById("photo").src = person.image;
-      document.getElementById("birth").textContent = person.birth;
-      document.getElementById("job").textContent = person.job;
-      document.getElementById("description").textContent = person.description;
+      document.getElementById("birth").textContent = person.birth || "—";
+      document.getElementById("job").textContent = person.job || "—";
+      document.getElementById("description").textContent = person.description || "—";
     });
 </script>
+
+</body>
+</html>
