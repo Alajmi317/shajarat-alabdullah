@@ -66,17 +66,26 @@ button:hover {
 
 <script>
 function login() {
-    const password = "abd123"; // ← غيّر كلمة المرور اللي تبيها
-    const input = document.getElementById("pass").value;
+    let username = document.getElementById("user").value.trim();
+    let password = document.getElementById("pass").value.trim();
+    let msg = document.getElementById("error");
 
-    if (input === password) {
+    let users = JSON.parse(localStorage.getItem("users") || "[]");
+
+    let user = users.find(u => u.username === username && u.password === password);
+
+    if (user) {
         localStorage.setItem("logged", "true");
+        localStorage.setItem("currentUser", username);
         window.location.href = "admin.html";
     } else {
-        document.getElementById("error").textContent = "كلمة المرور غير صحيحة";
+        msg.textContent = "اسم المستخدم أو كلمة المرور غير صحيحة";
     }
 }
 </script>
+    
+<input type="text" id="user" placeholder="اسم المستخدم">
+<input type="password" id="pass" placeholder="كلمة المرور">
 
 </body>
 </html>
