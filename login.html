@@ -87,5 +87,21 @@ function login() {
 <input type="text" id="user" placeholder="اسم المستخدم">
 <input type="password" id="pass" placeholder="كلمة المرور">
 
+<script>
+// إنشاء أدمن افتراضي إذا ما كان موجود
+if (!localStorage.getItem("users")) {
+    let defaultAdmin = [
+        {
+            id: 1,
+            username: "admin",
+            password: "12345",
+            role: "admin"
+        }
+    ];
+    localStorage.setItem("users", JSON.stringify(defaultAdmin));
+}
+</script>
+
+    
 </body>
 </html>
