@@ -9,15 +9,30 @@
   },
   {
     "id": 2,
-    "name": "محمد بن عبدالله",
-    "job": "وزارة الكهرباء والماء",
-    "image": "mohammadalajmi.jpg",
-    "birth": "1982",
+    "name": "معجب بن عبدالله",
+    "job": "",
+    "image": "m.jpg",
     "description": "هنا وصف الشخص",
-    "children": [7, 16]
+    "children": [14, 15]
   },
   {
     "id": 3,
+    "name": "سعد بن عبدالله",
+    "job": "",
+    "image": "s.jpg",
+    "description": "هنا وصف الشخص",
+    "children": [12, 13]
+  },
+  {
+    "id": 4,
+    "name": "حطاب بن عبدالله",
+    "job": "",
+    "image": "h.jpg",
+    "description": "هنا وصف الشخص",
+    "children": [10, 11]
+  },
+  {
+    "id": 5,
     "name": "فهيد بن عبدالله",
     "job": "وزارة الدفاع (متقاعد)",
     "image": "fhaidalajmi.jpg",
@@ -25,28 +40,13 @@
     "children": [8, 9]
   },
   {
-    "id": 4,
-    "name": "حطاب بن عبدالله",
-    "job": "",
-    "image": "fahad.jpg",
-    "description": "هنا وصف الشخص",
-    "children": [10, 11]
-  },
-  {
-    "id": 5,
-    "name": "سعد بن عبدالله",
-    "job": "",
-    "image": "turki.jpg",
-    "description": "هنا وصف الشخص",
-    "children": [12, 13]
-  },
-  {
     "id": 6,
-    "name": "معجب بن عبدالله",
-    "job": "",
-    "image": "aaa.jpg",
+    "name": "محمد بن عبدالله",
+    "job": "وزارة الكهرباء والماء",
+    "image": "m1.jpg",
+    "birth": "1982",
     "description": "هنا وصف الشخص",
-    "children": [14, 15]
+    "children": [7, 16]
   },
   {
     "id": 7,
