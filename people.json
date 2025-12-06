@@ -22,7 +22,7 @@
     "job": "وزارة الدفاع (متقاعد)",
     "image": "fhaidalajmi.jpg",
     "description": "هنا وصف الشخص",
-    "children": [9, 10, 11]
+    "children": [9, 10]
   },
   {
     "id": 4,
@@ -30,7 +30,7 @@
     "job": "",
     "image": "fahad.jpg",
     "description": "هنا وصف الشخص",
-    "children": [12, 13]
+    "children": [11, 12]
   },
   {
     "id": 5,
@@ -38,7 +38,7 @@
     "job": "",
     "image": "turki.jpg",
     "description": "هنا وصف الشخص",
-    "children": [14, 15]
+    "children": [13, 14]
   },
   {
     "id": 6,
@@ -46,7 +46,7 @@
     "job": "",
     "image": "rayan.jpg",
     "description": "هنا وصف الشخص",
-    "children": [16, 17, 18]
+    "children": [15, 16, 17]
   },
   {
     "id": 7,
