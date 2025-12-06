@@ -22,7 +22,7 @@
     "job": "وزارة الدفاع (متقاعد)",
     "image": "fhaidalajmi.jpg",
     "description": "هنا وصف الشخص",
-    "children": [9, 10]
+    "children": [8, 9]
   },
   {
     "id": 4,
@@ -30,7 +30,7 @@
     "job": "",
     "image": "fahad.jpg",
     "description": "هنا وصف الشخص",
-    "children": [11, 12]
+    "children": [10, 11]
   },
   {
     "id": 5,
@@ -38,7 +38,7 @@
     "job": "",
     "image": "turki.jpg",
     "description": "هنا وصف الشخص",
-    "children": [13, 14]
+    "children": [12, 13]
   },
   {
     "id": 6,
@@ -46,7 +46,7 @@
     "job": "",
     "image": "aaa.jpg",
     "description": "هنا وصف الشخص",
-    "children": [15, 16]
+    "children": [14, 15]
   },
   {
     "id": 7,
@@ -57,21 +57,21 @@
     "children": []
   },
   {
-    "id": 9,
+    "id": 8,
     "name": "مانع بن فهيد",
     "job": "طالب",
     "image": "saud.jpg",
     "children": []
   },
   {
-    "id": 10,
+    "id": 9,
     "name": "ماجد بن فهيد",
     "job": "طالب",
     "image": "fahad.jpg",
     "children": []
   },
   {
-    "id": 11,
+    "id": 10,
     "name": "عبدالله بن حطاب",
     "job": "طالب جامعة",
     "birth": "2006",
@@ -79,7 +79,7 @@
     "children": []
   },
   {
-    "id": 12,
+    "id": 11,
     "name": "سعد بن حطاب",
     "job": "طالب",
     "birth": "2012",
@@ -87,7 +87,7 @@
     "children": []
   },
    {
-    "id": 13,
+    "id": 12,
     "name": "عبدالله بن سعد",
      "job": "طالب جامعة",
     "birth": "2005/7/10",
@@ -95,7 +95,7 @@
     "children": []
   },
   {
-    "id": 14,
+    "id": 13,
     "name": "حمد بن سعد",
     "job": "طالب",
     "birth": "2010/6/23",
@@ -103,13 +103,13 @@
     "children": []
   },
   {
-    "id": 15,
+    "id": 14,
     "name": "عبدالله بن معجب",
     "image": "fahad.jpg",
     "children": []
   },
   {
-    "id": 16,
+    "id": 15,
     "name": "مانع بن معجب",
     "job": "طالب جامعه",
     "birth": "2007/10/4",
