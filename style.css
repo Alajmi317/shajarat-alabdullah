@@ -168,3 +168,7 @@ button {
 .back-btn:hover {
   background: #1b5e20;
 }
+
+* {
+  font-weight: bold;
+}
