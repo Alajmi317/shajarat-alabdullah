@@ -103,7 +103,7 @@
   {
     "id": 15,
     "name": "حمد بن سعد",
-    "birth": "2011",
+    "birth": "2010/6/23",
     "image": "hamadsaad.jpg",
     "children": []
   },
@@ -116,7 +116,8 @@
   {
     "id": 17,
     "name": "مانع بن معجب",
-    "image": "turki.jpg",
+    "birth": "2007/10/4",
+    "image": "mane.jpg",
     "children": [2]
   },
   {
