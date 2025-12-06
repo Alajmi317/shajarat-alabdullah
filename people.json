@@ -9,36 +9,102 @@
     "id": 2,
     "name": "محمد بن عبدالله",
     "image": "mohammed.jpg",
-    "children": [7]
+    "children": [7, 8]
   },
   {
     "id": 3,
     "name": "فهيد بن عبدالله",
     "image": "saud.jpg",
-    "children": [3]
+    "children": [9, 10, 11]
   },
   {
     "id": 4,
     "name": "حطاب بن عبدالله",
     "image": "fahad.jpg",
-    "children": [2]
+    "children": [12, 13]
   },
   {
     "id": 5,
     "name": "سعد بن محمد",
     "image": "turki.jpg",
-    "children": [2]
+    "children": [14, 15]
   },
   {
     "id": 6,
     "name": "معجب بن محمد",
     "image": "rayan.jpg",
-    "children": [3]
+    "children": [16, 17, 18]
   },
   {
     "id": 7,
-    "name": "سيف بن فهد",
+    "name": "عبدالله بن محمد",
     "image": "saif.jpg",
     "children": []
+  },
+   {
+    "id": 8,
+    "name": "صالح بن محمد",
+    "image": "mohammed.jpg",
+    "children": []
+  },
+  {
+    "id": 9,
+    "name": "مانع بن فهيد",
+    "image": "saud.jpg",
+    "children": []
+  },
+  {
+    "id": 10,
+    "name": "ماجد بن فهيد",
+    "image": "fahad.jpg",
+    "children": []
+  },
+  {
+    "id": 11,
+    "name": "محمد بن فهيد",
+    "image": "turki.jpg",
+    "children": []
+  },
+  {
+    "id": 12,
+    "name": "عبدالله بن حطاب",
+    "image": "rayan.jpg",
+    "children": []
+  },
+  {
+    "id": 13,
+    "name": "سعد بن حطاب",
+    "image": "saif.jpg",
+    "children": []
+  },
+   {
+    "id": 14,
+    "name": "عبدالله بن سعد",
+    "image": "mohammed.jpg",
+    "children": []
+  },
+  {
+    "id": 15,
+    "name": "حمد بن سعد",
+    "image": "saud.jpg",
+    "children": []
+  },
+  {
+    "id": 16,
+    "name": "عبدالله بن معجب",
+    "image": "fahad.jpg",
+    "children": [2]
+  },
+  {
+    "id": 17,
+    "name": "مانع بن معجب",
+    "image": "turki.jpg",
+    "children": [2]
+  },
+  {
+    "id": 18,
+    "name": "سعد بن معجب",
+    "image": "rayan.jpg",
+    "children": [3]
   }
 ]
