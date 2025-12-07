@@ -54,12 +54,15 @@
 
     .card:hover { transform: scale(1.07); }
 
-    .card img {
-      width: 100%;
-      height: 140px;
-      border-radius: 10px;
-      object-fit: cover;
-    }
+.card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;     /* يجعل الصورة دائرة */
+    object-fit: cover;      /* يقص الصورة بدون تشويه */
+    display: block;
+    margin: 0 auto;
+}
+
 
     .line {
       width: 3px;
@@ -151,6 +154,7 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 
 
