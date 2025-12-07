@@ -20,7 +20,7 @@
     "job": "",
     "description": "هنا وصف الشخص",
     "image": "m.jpg",
-    "fatherId": null
+    "children": [14, 15, 17]
   },
   {
     "id": 3,
@@ -29,10 +29,7 @@
     "job": "",
     "image": "s.jpg",
     "description": "هنا وصف الشخص",
-    "children": [
-      12,
-      13
-    ]
+    "children": [12, 13]
   },
   {
     "id": 4,
@@ -40,10 +37,7 @@
     "job": "",
     "image": "h.jpg",
     "description": "هنا وصف الشخص",
-    "children": [
-      10,
-      11
-    ]
+    "children": [10, 11]
   },
   {
     "id": 5,
@@ -51,11 +45,7 @@
     "job": "وزارة الدفاع (متقاعد)",
     "image": "fhaidalajmi.jpg",
     "description": "هنا وصف الشخص",
-    "children": [
-      8,
-      9,
-      19
-    ]
+    "children": [8, 9, 19]
   },
   {
     "id": 6,
@@ -64,7 +54,7 @@
     "job": "وزارة الكهرباء والماء",
     "description": "هنا وصف الشخص",
     "image": "m1.jpg",
-    "fatherId": null
+    "children": [7, 16, 18]
   },
   {
     "id": 7,
