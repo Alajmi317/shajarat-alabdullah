@@ -18,56 +18,38 @@
 </head>
   
   <style>
-    body {
-      font-family: sans-serif;
-      background: #e8f5e9;
-      padding: 20px;
-      text-align: center;
-    }
+    #tree {
+  background: #f3f8e7;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 18px;
+  line-height: 1.8;
+}
 
-    h1 { color: #1b5e20; }
+.tree-item {
+  margin-bottom: 10px;
+}
 
-    .level-title {
-      font-size: 22px;
-      font-weight: bold;
-      margin-top: 40px;
-      color: #2e7d32;
-    }
+.person-name {
+  background: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  display: inline-block;
+  font-weight: bold;
+}
 
-    .tree-row {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
+.root .person-name {
+  background: #c1e6b0;
+}
 
-    .card {
-      background: white;
-      padding: 15px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      width: 150px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+.child .person-name {
+  background: #d8f3c0;
+}
 
-    .card:hover { transform: scale(1.07); }
+.grand .person-name {
+  background: #ecf9dd;
+}
 
-    .card img {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 50%;   /* ← هذا يخليها دائرة */
-   }
-
-
-    .line {
-      width: 3px;
-      height: 40px;
-      background: #388e3c;
-      margin: 0 auto;
-    }
   </style>
 </head>
  
@@ -152,6 +134,7 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 
 
