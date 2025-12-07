@@ -146,9 +146,21 @@
 
 <body>
   <div class="admin-top">
-  <a href="abdullah-control-4873.html" class="admin-btn">لوحة التحكم</a>
+  <button class="admin-btn" onclick="openAdmin()">لوحة التحكم</button>
 </div>
 </body>
+<script>
+  function openAdmin() {
+    const code = prompt("ادخل رمز الأدمن:");
+    if (code === "9732") {
+      // لو الرمز صحيح يوديك للوحة التحكم
+      window.location.href = "admin.html";
+    } else {
+      alert("الرمز غير صحيح");
+    }
+  }
+</script>
+
 
 <head>
   <style>
@@ -178,6 +190,7 @@
 </style>
 
 </head>
+
 
 
 
