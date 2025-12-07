@@ -18,3 +18,38 @@ async function loadMembers() {
 }
 
 loadMembers();
+
+
+  function renderTree() {
+  let tree = document.getElementById("tree");
+  tree.innerHTML = "";
+
+  // اجلب الجذور (اللي ما لهم أب)
+  let roots = people.filter(p => !p.fatherId);
+
+  roots.forEach(root => {
+    tree.innerHTML += `
+      <div class="tree-item root">
+        <div class="person-name">${root.name}</div>
+      </div>
+    `;
+
+    let children = people.filter(ch => ch.fatherId == root.id);
+    children.forEach(child => {
+      tree.innerHTML += `
+        <div class="tree-item child">
+          <div class="person-name">└─ الابن: ${child.name}</div>
+        </div>
+      `;
+
+      let grand = people.filter(g => g.fatherId == child.id);
+      grand.forEach(g => {
+        tree.innerHTML += `
+          <div class="tree-item grand">
+            <div class="person-name">  └─ الحفيد: ${g.name}</div>
+          </div>
+        `;
+      });
+    });
+  });
+}
