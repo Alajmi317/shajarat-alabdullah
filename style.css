@@ -169,6 +169,16 @@ button {
   background: #1b5e20;
 }
 
+.person-image {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 20px;
+    object-fit: cover;
+    display: block;
+    margin: auto;
+}
+
 
 
 
