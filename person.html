@@ -12,19 +12,26 @@
     text-align: center;
     padding: 20px;
   }
-  .card {
-    background: white;
-    width: 320px;
-    margin: auto;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-  }
-  img {
-    width: 250px;
-    border-radius: 15px;
-    margin-bottom: 10px;
-  }
+.card {
+  background: white;
+  width: 100%;
+  max-width: 450px; /* أكبر عرض على الكمبيوتر */
+  margin: auto;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+/* الصورة تتناسب مع الجوال */
+img {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
   .back {
     position: fixed;
     top: 10px;
