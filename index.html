@@ -141,7 +141,18 @@
       });
   </script>
 </body>
-  
+  <script>
+  function openAdmin() {
+    const code = prompt("ادخل رمز الأدمن:");
+    if (code === "9732") {
+      // لو الرمز صحيح يوديك للوحة التحكم
+      window.location.href = "admin.html";
+    } else {
+      alert("الرمز غير صحيح");
+    }
+  }
+</script>
+
 </html>
 
 <body>
@@ -179,6 +190,7 @@
 </style>
 
 </head>
+
 
 
 
