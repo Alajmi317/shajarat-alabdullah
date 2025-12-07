@@ -2,148 +2,530 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>لوحة التحكم</title>
+<title>لوحة تحكم شجرة آل عبدالله</title>
 
-<style>
-body {
-  font-family: sans-serif;
-  background: #eef5e3;
-  padding: 20px;
-}
-
-.container {
-  max-width: 700px;
-  margin: auto;
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.2);
-}
-
-.person {
-  background: #e8f4d9;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  margin: 6px 0;
-  border-radius: 8px;
-  border: 1px solid #bbb;
-}
-
-button {
-  background: #2e7d32;
-  padding: 10px 15px;
-  border: none;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-button:hover {
-  background: #1b5e20;
-}
-
-#jsonOutput {
-  width: 100%;
-  height: 200px;
-  margin-top: 20px;
-}
-</style>
-
+<!-- حماية بسيطة برمز 9732 -->
 <script>
-// حماية برمز 9732
-let code = prompt("ادخل رمز الدخول:");
-if (code !== "9732") {
-    alert("رمز خطأ");
+  var code = prompt("ادخل رمز الدخول:");
+  if (code !== "9732") {
+    alert("رمز خاطئ");
     window.location.href = "index.html";
-}
+  }
 </script>
 
+<style>
+  body {
+    font-family: sans-serif;
+    background: #eef5e3;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+  }
+
+  h2, h3 {
+    margin-top: 0;
+  }
+
+  .flex {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .col {
+    flex: 1 1 300px;
+  }
+
+  input, textarea, select {
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0;
+    border-radius: 8px;
+    border: 1px solid #bbb;
+    font-size: 14px;
+  }
+
+  textarea {
+    min-height: 80px;
+  }
+
+  button {
+    background: #2e7d32;
+    padding: 8px 14px;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 8px;
+    font-size: 14px;
+  }
+
+  button:hover {
+    background: #1b5e20;
+  }
+
+  .person {
+    background: #e8f4d9;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .person img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .person-info {
+    flex: 1;
+    font-size: 13px;
+  }
+
+  .person-actions button {
+    margin-right: 5px;
+  }
+
+  #photoPreview {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #ddd;
+    display: block;
+    margin-top: 5px;
+  }
+
+  #jsonOutput {
+    width: 100%;
+    height: 200px;
+    margin-top: 10px;
+    font-family: monospace;
+    font-size: 12px;
+  }
+
+  .tree {
+    margin-top: 10px;
+    font-size: 13px;
+  }
+
+  .tree-level {
+    margin-bottom: 15px;
+  }
+
+  .tree-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .tree-card {
+    background: #f4fbec;
+    padding: 8px;
+    border-radius: 8px;
+    min-width: 120px;
+    text-align: center;
+  }
+
+  .tree-card strong {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .top-bar a {
+    text-decoration: none;
+    color: #2e7d32;
+    font-weight: bold;
+  }
+
+  .danger {
+    background: #c62828;
+  }
+
+  .danger:hover {
+    background: #8e0000;
+  }
+
+</style>
 </head>
 <body>
 
 <div class="container">
-  <h2>لوحة تحكم الأدمن</h2>
+  <div class="top-bar">
+    <h2>لوحة تحكم شجرة آل عبدالله</h2>
+    <a href="index.html">العودة للموقع</a>
+  </div>
 
-  <h3>إضافة شخص جديد</h3>
+  <div class="flex">
+    <!-- عمود النموذج -->
+    <div class="col">
+      <h3>إضافة / تعديل شخص</h3>
 
-  <input id="name" placeholder="اسم الشخص">
-  <input id="birth" placeholder="المواليد">
-  <input id="job" placeholder="الوظيفة">
-  <input id="image" placeholder="رابط الصورة أو اسمها">
-  <textarea id="desc" placeholder="الوصف"></textarea>
-  <input id="fatherId" placeholder="رقم الأب (اختياري)">
+      <!-- لإدارة حالة التعديل -->
+      <input type="hidden" id="editId">
 
-  <button onclick="addPerson()">إضافة شخص</button>
+      <label>الاسم:</label>
+      <input id="name" placeholder="اسم الشخص">
+
+      <label>المواليد:</label>
+      <input id="birth" placeholder="مثال: 1980 أو 1980-05-12">
+
+      <label>الوظيفة:</label>
+      <input id="job" placeholder="الوظيفة">
+
+      <label>الوصف:</label>
+      <textarea id="desc" placeholder="وصف مختصر عن الشخص"></textarea>
+
+      <label>صورة الشخص (رفع ملف):</label>
+      <input type="file" id="photoFile" accept="image/*">
+      <img id="photoPreview" alt="معاينة الصورة">
+
+      <label>الأب (اختياري):</label>
+      <select id="fatherId">
+        <option value="">بدون أب (جد / أصل)</option>
+      </select>
+
+      <button onclick="savePerson()">حفظ الشخص</button>
+      <button class="danger" onclick="resetForm()">مسح النموذج</button>
+    </div>
+
+    <!-- عمود قائمة الأشخاص -->
+    <div class="col">
+      <h3>الأشخاص الحاليون</h3>
+      <div id="list"></div>
+    </div>
+  </div>
 
   <hr>
 
-  <h3>الأشخاص المضافين:</h3>
-  <div id="list"></div>
+  <h3>شجرة العائلة (عرض مبسط داخل لوحة التحكم)</h3>
+  <div id="tree" class="tree"></div>
 
-  <h3>الملف النهائي (people.json):</h3>
+  <hr>
+
+  <h3>تصدير people.json</h3>
+  <p>انسخ هذا المحتوى وضعه في ملف <code>people.json</code> داخل GitHub ثم اعمل نشر من جديد على Vercel.</p>
+  <button onclick="downloadJSON()">تنزيل ملف people.json</button>
   <textarea id="jsonOutput" readonly></textarea>
 </div>
 
 <script>
-let people = [];
+  let people = [];
+  let currentImageData = ""; // لتخزين صورة Base64 أثناء الإضافة/التعديل
 
-// إضافة شخص
-function addPerson() {
-  let person = {
-    id: Date.now(),
-    name: document.getElementById("name").value,
-    birth: document.getElementById("birth").value,
-    job: document.getElementById("job").value,
-    image: document.getElementById("image").value,
-    description: document.getElementById("desc").value,
-    fatherId: document.getElementById("fatherId").value || null
-  };
-
-  if (!person.name) {
-    alert("الاسم مطلوب");
-    return;
+  // تحميل البيانات من people.json عند فتح لوحة التحكم
+  async function init() {
+    try {
+      const res = await fetch('people.json');
+      if (res.ok) {
+        people = await res.json();
+      } else {
+        people = [];
+      }
+    } catch (e) {
+      people = [];
+    }
+    renderList();
+    updateJSON();
+    updateTree();
+    fillFatherSelect();
   }
 
-  people.push(person);
-  renderList();
-  updateJSON();
-}
+  // تعبئة قائمة اختيار الأب
+  function fillFatherSelect() {
+    const select = document.getElementById('fatherId');
+    const currentEditId = document.getElementById('editId').value || null;
 
-// عرض الأشخاص
-function renderList() {
-  let html = "";
-  people.forEach((p, i) => {
-    html += `
-      <div class="person">
+    // احفظ أول خيار
+    const firstOption = select.querySelector('option[value=""]');
+    select.innerHTML = "";
+    if (firstOption) {
+      select.appendChild(firstOption);
+    } else {
+      const opt = document.createElement('option');
+      opt.value = "";
+      opt.textContent = "بدون أب (جد / أصل)";
+      select.appendChild(opt);
+    }
+
+    people.forEach(p => {
+      // لا نعرض الشخص نفسه كأب عندما نعدله
+      if (currentEditId && String(p.id) === String(currentEditId)) return;
+      const opt = document.createElement('option');
+      opt.value = p.id;
+      opt.textContent = p.name;
+      select.appendChild(opt);
+    });
+  }
+
+  // إضافة / تعديل شخص
+  function savePerson() {
+    const editId = document.getElementById('editId').value;
+    const name = document.getElementById('name').value.trim();
+    const birth = document.getElementById('birth').value.trim();
+    const job = document.getElementById('job').value.trim();
+    const desc = document.getElementById('desc').value.trim();
+    const fatherIdValue = document.getElementById('fatherId').value;
+    const fatherId = fatherIdValue ? Number(fatherIdValue) : null;
+
+    if (!name) {
+      alert("الاسم مطلوب");
+      return;
+    }
+
+    if (editId) {
+      // تعديل
+      const idx = people.findIndex(p => String(p.id) === String(editId));
+      if (idx !== -1) {
+        people[idx].name = name;
+        people[idx].birth = birth;
+        people[idx].job = job;
+        people[idx].description = desc;
+        people[idx].fatherId = fatherId;
+        if (currentImageData) {
+          people[idx].image = currentImageData;
+        }
+      }
+    } else {
+      // إضافة جديد
+      const newPerson = {
+        id: Date.now(),
+        name,
+        birth,
+        job,
+        description: desc,
+        image: currentImageData || "",
+        fatherId
+      };
+      people.push(newPerson);
+    }
+
+    resetForm();
+    renderList();
+    updateJSON();
+    updateTree();
+    fillFatherSelect();
+  }
+
+  // تصفير النموذج
+  function resetForm() {
+    document.getElementById('editId').value = "";
+    document.getElementById('name').value = "";
+    document.getElementById('birth').value = "";
+    document.getElementById('job').value = "";
+    document.getElementById('desc').value = "";
+    document.getElementById('fatherId').value = "";
+    document.getElementById('photoFile').value = "";
+    document.getElementById('photoPreview').src = "";
+    currentImageData = "";
+    fillFatherSelect();
+  }
+
+  // عرض الأشخاص في القائمة
+  function renderList() {
+    const list = document.getElementById('list');
+    list.innerHTML = "";
+
+    if (!people.length) {
+      list.innerHTML = "<p>لا يوجد أشخاص حالياً.</p>";
+      return;
+    }
+
+    people.forEach((p, index) => {
+      const div = document.createElement('div');
+      div.className = "person";
+
+      const img = document.createElement('img');
+      img.src = p.image || "";
+      img.alt = p.name;
+
+      const info = document.createElement('div');
+      info.className = "person-info";
+      info.innerHTML = `
         <strong>${p.name}</strong><br>
-        المواليد: ${p.birth}<br>
-        الوظيفة: ${p.job}<br>
-        الأب: ${p.fatherId}<br>
-        <button onclick="deletePerson(${i})">حذف</button>
-      </div>
-    `;
+        المواليد: ${p.birth || "-"}<br>
+        الوظيفة: ${p.job || "-"}<br>
+        الأب: ${getFatherName(p.fatherId) || "—"}
+      `;
+
+      const actions = document.createElement('div');
+      actions.className = "person-actions";
+      const editBtn = document.createElement('button');
+      editBtn.textContent = "تعديل";
+      editBtn.onclick = () => startEdit(p.id);
+
+      const delBtn = document.createElement('button');
+      delBtn.textContent = "حذف";
+      delBtn.className = "danger";
+      delBtn.onclick = () => deletePerson(index);
+
+      actions.appendChild(editBtn);
+      actions.appendChild(delBtn);
+
+      div.appendChild(img);
+      div.appendChild(info);
+      div.appendChild(actions);
+
+      list.appendChild(div);
+    });
+  }
+
+  function getFatherName(fatherId) {
+    if (!fatherId && fatherId !== 0) return null;
+    const f = people.find(p => Number(p.id) === Number(fatherId));
+    return f ? f.name : null;
+  }
+
+  // بدء تعديل شخص
+  function startEdit(id) {
+    const p = people.find(x => String(x.id) === String(id));
+    if (!p) return;
+
+    document.getElementById('editId').value = p.id;
+    document.getElementById('name').value = p.name;
+    document.getElementById('birth').value = p.birth || "";
+    document.getElementById('job').value = p.job || "";
+    document.getElementById('desc').value = p.description || "";
+    document.getElementById('fatherId').value = p.fatherId || "";
+    document.getElementById('photoPreview').src = p.image || "";
+    currentImageData = p.image || "";
+
+    fillFatherSelect();
+  }
+
+  // حذف شخص
+  function deletePerson(index) {
+    if (!confirm("متأكد من الحذف؟")) return;
+    const removed = people[index];
+
+    // إزالة كأب من الآخرين
+    people = people.map(p => {
+      if (p.fatherId === removed.id) {
+        return { ...p, fatherId: null };
+      }
+      return p;
+    });
+
+    people.splice(index, 1);
+    renderList();
+    updateJSON();
+    updateTree();
+    fillFatherSelect();
+  }
+
+  // تحديث JSON النهائي
+  function updateJSON() {
+    document.getElementById('jsonOutput').value = JSON.stringify(people, null, 2);
+  }
+
+  // تنزيل ملف people.json
+  function downloadJSON() {
+    const blob = new Blob([JSON.stringify(people, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = "people.json";
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // رفع صورة وتحويلها إلى Base64
+  document.getElementById('photoFile').addEventListener('change', function (e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function () {
+      currentImageData = reader.result;
+      document.getElementById('photoPreview').src = currentImageData;
+    };
+    reader.readAsDataURL(file);
   });
-  document.getElementById("list").innerHTML = html;
-}
 
-// حذف شخص
-function deletePerson(index) {
-  people.splice(index, 1);
-  renderList();
-  updateJSON();
-}
+  // بناء شجرة العائلة
+  function updateTree() {
+    const treeDiv = document.getElementById('tree');
+    treeDiv.innerHTML = "";
 
-// تحديث JSON النهائي
-function updateJSON() {
-  document.getElementById("jsonOutput").value = JSON.stringify(people, null, 2);
-}
+    if (!people.length) {
+      treeDiv.innerHTML = "<p>لا يوجد بيانات لعرض الشجرة.</p>";
+      return;
+    }
+
+    // الجذور (بدون أب)
+    const roots = people.filter(p => !p.fatherId);
+
+    if (!roots.length) {
+      treeDiv.innerHTML = "<p>لا يوجد أشخاص بدون أب، الشجرة غير واضحة.</p>";
+      return;
+    }
+
+    roots.forEach(root => {
+      const levelDiv = document.createElement('div');
+      levelDiv.className = "tree-level";
+      levelDiv.innerHTML = `<strong>الجد / الأصل: ${root.name}</strong>`;
+
+      const row = document.createElement('div');
+      row.className = "tree-row";
+
+      const rootCard = document.createElement('div');
+      rootCard.className = "tree-card";
+      rootCard.innerHTML = `<strong>${root.name}</strong><span>${root.birth || ""}</span>`;
+      row.appendChild(rootCard);
+
+      levelDiv.appendChild(row);
+
+      // أبناء هذا الأصل
+      const childrenRow = document.createElement('div');
+      childrenRow.className = "tree-row";
+      const children = people.filter(p => p.fatherId === root.id);
+      if (children.length) {
+        children.forEach(ch => {
+          const chCard = document.createElement('div');
+          chCard.className = "tree-card";
+          chCard.innerHTML = `<strong>${ch.name}</strong><span>ابن ${root.name}</span>`;
+          childrenRow.appendChild(chCard);
+
+          // أحفاد هذا الابن
+          const grandChildren = people.filter(p => p.fatherId === ch.id);
+          if (grandChildren.length) {
+            const gcRow = document.createElement('div');
+            gcRow.className = "tree-row";
+            grandChildren.forEach(gc => {
+              const gcCard = document.createElement('div');
+              gcCard.className = "tree-card";
+              gcCard.innerHTML = `<strong>${gc.name}</strong><span>حفيد ${root.name}</span>`;
+              gcRow.appendChild(gcCard);
+            });
+            levelDiv.appendChild(gcRow);
+          }
+        });
+        levelDiv.appendChild(childrenRow);
+      }
+
+      treeDiv.appendChild(levelDiv);
+    });
+  }
+
+  // تشغيل البداية
+  init();
 </script>
 
 </body>
