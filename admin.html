@@ -4,15 +4,6 @@
 <meta charset="UTF-8">
 <title>لوحة تحكم شجرة آل عبدالله</title>
 
-<!-- حماية بسيطة برمز 9732 -->
-<script>
-  var code = prompt("ادخل رمز الدخول:");
-  if (code !== "9732") {
-    alert("رمز خاطئ");
-    window.location.href = "index.html";
-  }
-</script>
-
 <style>
   body {
     font-family: sans-serif;
@@ -97,16 +88,6 @@
     margin-right: 5px;
   }
 
-  #photoPreview {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    background: #ddd;
-    display: block;
-    margin-top: 5px;
-  }
-
   #jsonOutput {
     width: 100%;
     height: 200px;
@@ -163,7 +144,6 @@
   .danger:hover {
     background: #8e0000;
   }
-
 </style>
 </head>
 <body>
@@ -179,7 +159,6 @@
     <div class="col">
       <h3>إضافة / تعديل شخص</h3>
 
-      <!-- لإدارة حالة التعديل -->
       <input type="hidden" id="editId">
 
       <label>الاسم:</label>
@@ -194,9 +173,8 @@
       <label>الوصف:</label>
       <textarea id="desc" placeholder="وصف مختصر عن الشخص"></textarea>
 
-      <label>صورة الشخص (رفع ملف):</label>
-      <input type="file" id="photoFile" accept="image/*">
-      <img id="photoPreview" alt="معاينة الصورة">
+      <label>اسم ملف الصورة (مثال: abdullah.jpg):</label>
+      <input id="image" placeholder="abdullah.jpg">
 
       <label>الأب (اختياري):</label>
       <select id="fatherId">
@@ -222,16 +200,15 @@
   <hr>
 
   <h3>تصدير people.json</h3>
-  <p>انسخ هذا المحتوى وضعه في ملف <code>people.json</code> داخل GitHub ثم اعمل نشر من جديد على Vercel.</p>
-  <button onclick="downloadJSON()">تنزيل ملف people.json</button>
+  <p>بعد الانتهاء اضغط "نسخ people.json" ثم ضع المحتوى في ملف <code>people.json</code> في GitHub.</p>
+  <button onclick="copyJSON()">نسخ people.json</button>
   <textarea id="jsonOutput" readonly></textarea>
 </div>
 
 <script>
   let people = [];
-  let currentImageData = ""; // لتخزين صورة Base64 أثناء الإضافة/التعديل
 
-  // تحميل البيانات من people.json عند فتح لوحة التحكم
+  // تحميل people.json من الموقع
   async function init() {
     try {
       const res = await fetch('people.json');
@@ -249,16 +226,15 @@
     fillFatherSelect();
   }
 
-  // تعبئة قائمة اختيار الأب
+  // تعبئة قائمة الأب
   function fillFatherSelect() {
     const select = document.getElementById('fatherId');
     const currentEditId = document.getElementById('editId').value || null;
 
-    // احفظ أول خيار
-    const firstOption = select.querySelector('option[value=""]');
+    const first = select.querySelector('option[value=""]');
     select.innerHTML = "";
-    if (firstOption) {
-      select.appendChild(firstOption);
+    if (first) {
+      select.appendChild(first);
     } else {
       const opt = document.createElement('option');
       opt.value = "";
@@ -267,7 +243,6 @@
     }
 
     people.forEach(p => {
-      // لا نعرض الشخص نفسه كأب عندما نعدله
       if (currentEditId && String(p.id) === String(currentEditId)) return;
       const opt = document.createElement('option');
       opt.value = p.id;
@@ -276,13 +251,14 @@
     });
   }
 
-  // إضافة / تعديل شخص
+  // حفظ (إضافة أو تعديل)
   function savePerson() {
     const editId = document.getElementById('editId').value;
     const name = document.getElementById('name').value.trim();
     const birth = document.getElementById('birth').value.trim();
     const job = document.getElementById('job').value.trim();
     const desc = document.getElementById('desc').value.trim();
+    const image = document.getElementById('image').value.trim();
     const fatherIdValue = document.getElementById('fatherId').value;
     const fatherId = fatherIdValue ? Number(fatherIdValue) : null;
 
@@ -292,27 +268,23 @@
     }
 
     if (editId) {
-      // تعديل
       const idx = people.findIndex(p => String(p.id) === String(editId));
       if (idx !== -1) {
         people[idx].name = name;
         people[idx].birth = birth;
         people[idx].job = job;
         people[idx].description = desc;
+        people[idx].image = image;
         people[idx].fatherId = fatherId;
-        if (currentImageData) {
-          people[idx].image = currentImageData;
-        }
       }
     } else {
-      // إضافة جديد
       const newPerson = {
         id: Date.now(),
         name,
         birth,
         job,
         description: desc,
-        image: currentImageData || "",
+        image,
         fatherId
       };
       people.push(newPerson);
@@ -325,21 +297,17 @@
     fillFatherSelect();
   }
 
-  // تصفير النموذج
   function resetForm() {
     document.getElementById('editId').value = "";
     document.getElementById('name').value = "";
     document.getElementById('birth').value = "";
     document.getElementById('job').value = "";
     document.getElementById('desc').value = "";
+    document.getElementById('image').value = "";
     document.getElementById('fatherId').value = "";
-    document.getElementById('photoFile').value = "";
-    document.getElementById('photoPreview').src = "";
-    currentImageData = "";
     fillFatherSelect();
   }
 
-  // عرض الأشخاص في القائمة
   function renderList() {
     const list = document.getElementById('list');
     list.innerHTML = "";
@@ -389,12 +357,11 @@
   }
 
   function getFatherName(fatherId) {
-    if (!fatherId && fatherId !== 0) return null;
+    if (fatherId === null || fatherId === "" || typeof fatherId === "undefined") return null;
     const f = people.find(p => Number(p.id) === Number(fatherId));
     return f ? f.name : null;
   }
 
-  // بدء تعديل شخص
   function startEdit(id) {
     const p = people.find(x => String(x.id) === String(id));
     if (!p) return;
@@ -404,19 +371,15 @@
     document.getElementById('birth').value = p.birth || "";
     document.getElementById('job').value = p.job || "";
     document.getElementById('desc').value = p.description || "";
+    document.getElementById('image').value = p.image || "";
     document.getElementById('fatherId').value = p.fatherId || "";
-    document.getElementById('photoPreview').src = p.image || "";
-    currentImageData = p.image || "";
-
     fillFatherSelect();
   }
 
-  // حذف شخص
   function deletePerson(index) {
     if (!confirm("متأكد من الحذف؟")) return;
     const removed = people[index];
 
-    // إزالة كأب من الآخرين
     people = people.map(p => {
       if (p.fatherId === removed.id) {
         return { ...p, fatherId: null };
@@ -431,35 +394,17 @@
     fillFatherSelect();
   }
 
-  // تحديث JSON النهائي
   function updateJSON() {
     document.getElementById('jsonOutput').value = JSON.stringify(people, null, 2);
   }
 
-  // تنزيل ملف people.json
-  function downloadJSON() {
-    const blob = new Blob([JSON.stringify(people, null, 2)], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = "people.json";
-    a.click();
-    URL.revokeObjectURL(url);
+  function copyJSON() {
+    const ta = document.getElementById('jsonOutput');
+    ta.select();
+    document.execCommand('copy');
+    alert("تم نسخ people.json، الآن الصقه في GitHub.");
   }
 
-  // رفع صورة وتحويلها إلى Base64
-  document.getElementById('photoFile').addEventListener('change', function (e) {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = function () {
-      currentImageData = reader.result;
-      document.getElementById('photoPreview').src = currentImageData;
-    };
-    reader.readAsDataURL(file);
-  });
-
-  // بناء شجرة العائلة
   function updateTree() {
     const treeDiv = document.getElementById('tree');
     treeDiv.innerHTML = "";
@@ -469,7 +414,6 @@
       return;
     }
 
-    // الجذور (بدون أب)
     const roots = people.filter(p => !p.fatherId);
 
     if (!roots.length) {
@@ -492,7 +436,6 @@
 
       levelDiv.appendChild(row);
 
-      // أبناء هذا الأصل
       const childrenRow = document.createElement('div');
       childrenRow.className = "tree-row";
       const children = people.filter(p => p.fatherId === root.id);
@@ -503,7 +446,6 @@
           chCard.innerHTML = `<strong>${ch.name}</strong><span>ابن ${root.name}</span>`;
           childrenRow.appendChild(chCard);
 
-          // أحفاد هذا الابن
           const grandChildren = people.filter(p => p.fatherId === ch.id);
           if (grandChildren.length) {
             const gcRow = document.createElement('div');
@@ -524,7 +466,6 @@
     });
   }
 
-  // تشغيل البداية
   init();
 </script>
 
