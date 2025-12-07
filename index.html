@@ -120,7 +120,7 @@
           </div>
         `;
 
-        // --- أحفاد كل ابن ---
+        // --- ابناء كل ابن ---
         sons.forEach(son => {
           const grandKids = son.children.map(id =>
             data.find(p => p.id === id)
@@ -128,7 +128,7 @@
 
           div.innerHTML += `
             <div class="line"></div>
-            <div class="level-title">أحفاد ${son.name}</div>
+            <div class="level-title">ابناء ${son.name}</div>
             <div class="tree-row">
               ${grandKids.map(k => `
                 <div class="card" onclick="location.href='person.html?id=${k.id}'">
@@ -156,6 +156,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
  
+
 
 
 
