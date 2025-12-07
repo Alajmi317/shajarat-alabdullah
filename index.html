@@ -80,67 +80,48 @@
   <div id="tree"></div>
 
   <script>
-    fetch("people.json")
-      .then(res => res.json())
-      .then(data => {
+   fetch("people.json")
+  .then(res => res.json())
+  .then(data => {
+    let people = data;
+    renderTree(people);
+  });
 
-        // ---- 1) اختر الجد ----
-        const grandFather = data[0];
+function renderTree(people) {
+  let tree = document.getElementById("tree");
+  tree.innerHTML = "";
 
-        // ---- 2) أبناء الجد ----
-        const sons = grandFather.children.map(id =>
-          data.find(p => p.id === id)
-        );
+  let roots = people.filter(p => !p.fatherId);
 
-        // نعمل الحاوية
-        const div = document.getElementById("tree");
+  roots.forEach(root => {
+    tree.innerHTML += `
+      <div>
+        <h2>${root.name}</h2>
+        <img src="${root.image}" style="width:140px;height:140px;border-radius:50%;object-fit:cover;">
+        ${renderChildren(people, root.id)}
+      </div>
+      <hr>
+    `;
+  });
+}
 
-        // --- الجد ---
-        div.innerHTML += `
-          <div class="level-title">الجد</div>
-          <div class="tree-row">
-            <div class="card" onclick="location.href='person.html?id=${grandFather.id}'">
-              <img src="${grandFather.image}">
-              <p>${grandFather.name}</p>
-            </div>
-          </div>
-          <div class="line"></div>
-        `;
+function renderChildren(people, fatherId) {
+  let children = people.filter(p => p.fatherId == fatherId);
+  if (!children.length) return "";
 
-        // --- أبناء الجد ---
-        div.innerHTML += `
-          <div class="level-title">الأبناء</div>
-          <div class="tree-row">
-            ${sons.map(s => `
-              <div class="card" onclick="location.href='person.html?id=${s.id}'">
-                <img src="${s.image}">
-                <p>${s.name}</p>
-              </div>
-            `).join("")}
-          </div>
-        `;
-
-        // --- ابناء كل ابن ---
-        sons.forEach(son => {
-          const grandKids = son.children.map(id =>
-            data.find(p => p.id === id)
-          );
-
-          div.innerHTML += `
-            <div class="line"></div>
-            <div class="level-title">عيال ${son.name}</div>
-            <div class="tree-row">
-              ${grandKids.map(k => `
-                <div class="card" onclick="location.href='person.html?id=${k.id}'">
-                  <img src="${k.image}">
-                  <p>${k.name}</p>
-                </div>
-              `).join("")}
-            </div>
-          `;
-        });
-
-      });
+  let html = "<div style='margin-right:20px'>";
+  children.forEach(ch => {
+    html += `
+      <div style="margin-top:15px">
+        <h3>${ch.name}</h3>
+        <img src="${ch.image}" style="width:90px;height:90px;border-radius:50%;object-fit:cover;">
+        ${renderChildren(people, ch.id)}
+      </div>
+    `;
+  });
+  html += "</div>";
+  return html;
+}
   </script>
 </body>
 
@@ -156,6 +137,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
  
+
 
 
 
