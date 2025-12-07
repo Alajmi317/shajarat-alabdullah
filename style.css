@@ -173,11 +173,14 @@ button {
     width: 100%;
     max-width: 350px;
     height: auto;
-    border-radius: 20px;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     display: block;
     margin: auto;
 }
+
 
 
 
