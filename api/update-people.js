@@ -1,6 +1,9 @@
 // api/update-people.js
 // دالة Vercel Serverless لتحديث people.json في GitHub
 
+const OWNER = 'Alajmi317';
+const REPO  = 'shajarat-alabdullah';
+const BRANCH = 'main';          // إذا فرعك اسمه غير main غيّره هنا
 const FILE_PATH = 'people.json';
 
 module.exports = async (req, res) => {
@@ -12,19 +15,15 @@ module.exports = async (req, res) => {
 
   try {
     const token = process.env.GITHUB_TOKEN;
-    const repoFull = process.env.GITHUB_REPO || 'Alajmi317/shajarat-alabdullah';
-    const branch = process.env.GITHUB_BRANCH || 'main';
-
     if (!token) {
       res.statusCode = 500;
-      return res.end(JSON.stringify({ error: 'GITHUB_TOKEN not set' }));
+      return res.end(JSON.stringify({ error: 'GITHUB_TOKEN is not set' }));
     }
 
     let body = '';
     for await (const chunk of req) {
       body += chunk;
     }
-
     const parsed = JSON.parse(body || '{}');
     const content = parsed.content;
 
@@ -33,16 +32,13 @@ module.exports = async (req, res) => {
       return res.end(JSON.stringify({ error: 'Missing content' }));
     }
 
-    const [owner, repo] = repoFull.split('/');
-
-    // نحول المصفوفة/الكائن إلى JSON مرتب
     const jsonString = typeof content === 'string'
       ? content
       : JSON.stringify(content, null, 2);
 
-    // نجيب ملف people.json الحالي عشان نعرف الـ sha
+    // نجيب sha الحالي للملف (لو موجود)
     const getResp = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}/contents/${FILE_PATH}?ref=${branch}`,
+      `https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE_PATH}?ref=${BRANCH}`,
       {
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -57,9 +53,8 @@ module.exports = async (req, res) => {
       sha = fileData.sha;
     }
 
-    // نرسل التحديث إلى GitHub
     const putResp = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}/contents/${FILE_PATH}`,
+      `https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE_PATH}`,
       {
         method: 'PUT',
         headers: {
@@ -69,7 +64,7 @@ module.exports = async (req, res) => {
         body: JSON.stringify({
           message: 'Update people.json from admin panel',
           content: Buffer.from(jsonString, 'utf8').toString('base64'),
-          branch,
+          branch: BRANCH,
           sha
         })
       }
