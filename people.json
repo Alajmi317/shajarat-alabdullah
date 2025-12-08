@@ -43,6 +43,7 @@
     "id": 5,
     "name": "فهيد بن عبدالله",
     "job": "وزارة الدفاع (متقاعد)",
+    "birth": "1979 / 12 / 24",
     "image": "fhaidalajmi.jpg",
     "description": "هنا وصف الشخص",
     "children": [8, 9, 19]
