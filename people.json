@@ -67,15 +67,17 @@
   {
     "id": 8,
     "name": "مانع بن فهيد",
-    "job": "طالب",
-    "image": "x.jpg",
+    "job": "طالب جامعة",
+    "birth": "2004 / 9 / 25",
+    "image": "100.jpg",
     "children": []
   },
   {
     "id": 9,
     "name": "ماجد بن فهيد",
     "job": "طالب",
-    "image": "x.jpg",
+    "birth": "2008 / 8 / 20",
+    "image": "200.jpg",
     "children": []
   },
   {
@@ -152,8 +154,8 @@
     "id": 19,
     "name": "محمد بن فهيد",
     "job": "طالب",
-    "birth": "2017",
-    "image": "x.jpg",
+    "birth": "2018 / 2 / 20",
+    "image": "300.jpg",
     "children": []
   }
 ]
